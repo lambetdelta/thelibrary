@@ -34,7 +34,7 @@ Route::get('contraseña/recuperar/{token}', 'Auth\ResetPasswordController@showRe
 
 Route::get('inicio', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'usuarios', 'middleware' => ['auth', 'auth','role:admin']], function(){
+Route::group(['prefix' => 'usuarios', 'middleware' => ['auth', 'auth']], function(){
 
     Route::get('editar/{id}', 'Auth\UsersController@viewEditUser')
     ->name('view_edit_user');

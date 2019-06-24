@@ -11,7 +11,7 @@
     @endif
     @if (isset($small))
         <small id="small-{{isset($id) ? $id : $name}}" class="form-text text-muted">
-            <i class="fas fa-info-circle"></i>{{$small}}
+            {{$small}}
         </small>
     @endif
 </div>

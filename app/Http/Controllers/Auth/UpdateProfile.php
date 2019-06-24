@@ -6,9 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Rules\CurrentPassword;
-use App\Http\Requests\UpdateUser;
-use App\Model\GroupUser;
-use App\Operation\User as OptUser;
+use App\Http\Requests\UpdateProfile as UpdateProfileReq;
 
 class UpdateProfile extends Controller
 {
@@ -31,19 +29,15 @@ class UpdateProfile extends Controller
         return redirect()->route('home');
 	}
 	public function viewUpdateProfile(Request $request){
-		$this->confView();
+        $this->resData('user', Auth::user());
 		return view('auth.update_profile',$this->data);
 	}
-	public function updateProfile(UpdateUser $request){
+	public function updateProfile(UpdateProfileReq $request){
 		$user = Auth::user();
-		$user->name = $request->name;
+		$user->name = $request->name_user;
 		$user->email = $request->email;
 		$user->save();
         $request->session()->flash('message',__('ms.update_profile'));
         return redirect()->route('home');
 	}
-	private function confView(){
-		$this->resData('user', Auth::user());
-		$this->resData('roles', \App\Role::orderBy('name','asc')->get());
-    }
 }

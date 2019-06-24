@@ -49,8 +49,11 @@ body{
 #websocket-status{
     margin: auto;
 }
-#menu a{
-    color: white
+#menu a, #menu a.dropdown-item:hover{
+    color: white;
+}
+#menu a.dropdown-item{
+    color: #333
 }
 .colors-institutional{
     color: black
@@ -150,6 +153,19 @@ body{
     margin-left: -15px;
     flex-wrap: wrap;
     padding: 5px 5px;
+}
+.navbar-left  .dropdown-menu{
+    right: 10px;
+    left: auto;
+}
+.navbar-left > li{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 5px 0px;
+}
+.navbar-left > li li{
+    display: none;
 }
 /*Sobreescribir estilos multiselect*/
 .multiselect-native-select > .btn-group {

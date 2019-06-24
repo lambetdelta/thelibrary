@@ -142,12 +142,12 @@ return [
     */
 
     'attributes' => [
-        'username' => 'Número de empleado',
         'current-password' => 'Contraseña Actual',
         'user_id' => 'Usuario',
         'limit_id' => 'Soporte',
         'direction' => 'Soporte',
         'rows' => 'Soporte',
+        'name_user' => 'Nombre Completo'
     ],
 
 ];
