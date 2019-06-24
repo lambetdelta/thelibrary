@@ -1,0 +1,9 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/js/DocReady.js": "/js/DocReady.js",
+    "/js/ConfigListUser.js": "/js/ConfigListUser.js",
+    "/js/vendor.js": "/js/vendor.js",
+    "/js/popper.min.js": "/js/popper.min.js",
+    "/css/vendor.css": "/css/vendor.css",
+    "/css/app.css": "/css/app.css"
+}
