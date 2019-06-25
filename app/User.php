@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * [sendPasswordResetNotification Enviar una notificación para la solicitu de cambio de contraseña]
+     * @param  [String] $token [Token para acceder al formulario de reseteo de contraseña]
+     * @return
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new \App\Notifications\ResetPassword($token));
+    }
 }

@@ -20,8 +20,8 @@ class CreateBorrowingsTable extends Migration
             $table->timestamp('returned');
             $table->timestamps();
 
-            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');;
-            $table->foreign('member_id')->references('id')->on('members');
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+            $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
         });
     }
 

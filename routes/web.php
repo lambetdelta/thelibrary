@@ -12,25 +12,28 @@
 */
 
 Route::get('/', 'Auth\LoginController@showLoginForm')
-    ->name('viewLogin');
+->name('viewLogin');
 
 Route::get('entrar', 'Auth\LoginController@showLoginForm')
-    ->name('viewLoginMain');
+->name('viewLoginMain');
 
 Route::post('entrar', 'Auth\LoginController@login')
-    ->name('login');
+->name('login');
 
 Route::post('salir', 'Auth\LoginController@logout')
-    ->name('logout');
+->name('logout');
 
 Route::get('contraseña/recuperar', 'Auth\ForgotPasswordController@showLinkRequestForm')
-	->name('password.request');
+->name('password.request');
 
 Route::post('contraseña/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')
-	->name('password.email');
+->name('password.email');
 
 Route::get('contraseña/recuperar/{token}', 'Auth\ResetPasswordController@showResetForm')
-	->name('password.reset');
+->name('password.reset');
+
+Route::post('contraseña/recuperar', 'Auth\ResetPasswordController@reset')
+->name('password.update');
 
 Route::get('inicio', 'HomeController@index')->name('home');
 
@@ -64,4 +67,52 @@ Route::group(['prefix' => 'perfil', 'middleware' => ['auth']], function(){
 
     Route::post('/editar', 'Auth\UpdateProfile@updateProfile')
         ->name('updateProfile');
+});
+
+Route::group(['prefix' => 'miembros', 'middleware' => ['auth']], function() {
+
+    Route::get('list', "MemberController@list")
+    ->name('member_list');
+
+    Route::get('agregar', "MemberController@viewAdd")
+    ->name('member_view_add');
+
+    Route::post('agregar', "MemberController@add")
+    ->name('member_add');
+
+    Route::get('editar/{id}', "MemberController@viewEdit")
+    ->name('member_view_edit');
+
+    Route::post('editar', "MemberController@edit")
+    ->name('member_edit');
+
+    Route::get('borrar/{id}', "MemberController@viewDelete")
+    ->name('member_view_delete');
+
+    Route::post('borrar', "MemberController@delete")
+    ->name('member_delete');
+});
+
+Route::group(['prefix' => 'categorias', 'middleware' => ['auth']], function() {
+
+    Route::get('list', "CategoryController@list")
+    ->name('category_list');
+
+    Route::get('agregar', "CategoryController@viewAdd")
+    ->name('category_view_add');
+
+    Route::post('agregar', "CategoryController@add")
+    ->name('category_add');
+
+    Route::get('editar/{id}', "CategoryController@viewEdit")
+    ->name('category_view_edit');
+
+    Route::post('editar', "CategoryController@edit")
+    ->name('category_edit');
+
+    Route::get('borrar/{id}', "CategoryController@viewDelete")
+    ->name('category_view_delete');
+
+    Route::post('borrar', "CategoryController@delete")
+    ->name('category_delete');
 });

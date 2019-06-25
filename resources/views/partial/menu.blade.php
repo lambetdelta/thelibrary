@@ -44,6 +44,28 @@
                             </a>
                         </div>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="users-menu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-users-cog"></i>Miembros
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="users-menu">
+                            <a class="dropdown-item" href="{{ route('member_view_add') }}">Nuevo</a>
+                            <a class="dropdown-item" href="{{ route('member_list') }}">
+                                Lista
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="users-menu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-users-cog"></i>Cátegorias
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="users-menu">
+                                <a class="dropdown-item" href="{{ route('category_view_add') }}">Nueva</a>
+                                <a class="dropdown-item" href="{{ route('category_list') }}">
+                                    Lista
+                                </a>
+                            </div>
+                        </li>
                 </ul>
             @endauth
         </div>
