@@ -11,4 +11,8 @@ class BookCategory extends Model
 
     protected $table = 'book_categorys';
     protected $guarded = [];
+
+    public function books(){
+        return $this->hasMany('App\Models\Book', 'book_category_id');
+    }
 }

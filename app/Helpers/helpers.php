@@ -26,3 +26,9 @@ if (!function_exists('getNumbers')) {
     	return preg_replace('/[^0-9]+/', '', $string);
 	}
 }
+
+if (!function_exists('formatStringJS')) {
+    function formatStringJS($string){
+    	return str_replace('"', '\"', $string);
+	}
+}

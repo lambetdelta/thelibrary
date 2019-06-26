@@ -35,6 +35,9 @@ mix.babel([
       'node_modules/izitoast/dist/js/iziToast.min.js',
    ], 'public/js/vendor.js')
    .scripts('resources/assets/vendor/Popper/popper.min.js','public/js/popper.min.js')
+   .scripts([
+       'resources/assets/js/ConfigListBook.js'
+    ],'public/js/list_user.js')
    .styles([
       'resources/assets/vendor/Bootstrap-4.1.3/css/bootstrap.css',
       'resources/assets/vendor/air-datepicker/dist/css/datepicker.min.css',

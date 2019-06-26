@@ -61,8 +61,8 @@
             @foreach ($members as $member)
                 data.push({
                     id : "{{$member->id}}",
-                    first_name : "{{$member->first_name}}",
-                    last_name : "{{$member->last_name}}",
+                    first_name : "{{formatStringJS($member->first_name)}}",
+                    last_name : "{{formatStringJS($member->last_name)}}",
                     created_at : "{{formatDate($member->created_at)}}",
                 });
             @endforeach

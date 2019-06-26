@@ -17,7 +17,7 @@ class CreateBorrowingsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('book_id');
             $table->unsignedBigInteger('member_id');
-            $table->timestamp('returned');
+            $table->timestamp('returned')->nullable();
             $table->timestamps();
 
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');

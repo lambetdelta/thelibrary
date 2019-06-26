@@ -2,9 +2,9 @@
 @section('content')
 @parent
 <div class="container-fluid mt-3">
-    <form id="delete-member" method="POST" action="{{ route('member_delete') }}">
+    <form id="delete-category" method="POST" action="{{ route('category_delete') }}">
     {{ csrf_field() }}
-    <input type="hidden" name="id" value="{{$member->id}}">
+    <input type="hidden" name="id" value="{{$category->id}}">
     <div class="row">
         <div class="col">
             <h1>Miembro</h1>
@@ -13,34 +13,31 @@
     <div class="row justify-content-center">
         <div class="col-lg-10 col-md-12">
             <div class="card border-primary">
-                <div class="card-header bg-danger text-white">
+                <div class="card-header text-white {{$category->deleted_at != null ? 'bg-warning' : 'bg-success'}}">
                     <h5 class="card-title">
-                        Eliminar
+                        Estatus
                     </h5>
                 </div>
                 <div class="card-body text-primary">
                     <div class="container-fluid">
                         <div class="row">
-                            @include('components.label',[
-                                'label' => 'Nombre Completo',
-                                'name' => 'first_name',
-                                'value' =>  $member->first_name,
-                                'form_group' => 'col-lg-6 col-md-6 col-sm-12 col-sx-12'
+                            @include('components.select_active',[
+                                'label' => '*Estatus',
+                                'name' => 'status_category',
+                                'input' => 'status_category',
+                                'attributes' => 'required',
+                                'deleted_at' =>  $category->deleted_at,
+                                'form_group' => 'col-lg-4 col-md-6 col-sm-12 col-sx-12'
                             ])
-                            @include('components.label',[
-                                'label' => 'Apellidos',
-                                'name' => 'first_name',
-                                'value' =>  $member->first_name,
-                                'form_group' => 'col-lg-6 col-md-6 col-sm-12 col-sx-12'
-                            ])
-                        </div>
-                        <div class="alert alert-warning" role="alert">
-                            <strong>Importante: </strong>Una vez que borres el miembro todos los registros de
-                            los préstamos realizados a él serán borrado también.
+                            <div class="alert alert-warning" role="alert">
+                                <strong>Importante: </strong>No es posible borrar una categoría (esto para
+                                 mantener la integridad de los registros) sin embargo si deseas que esta deje de
+                                 aparecer en los buscadores de alta de registros solo cambia su estatus a inactivo
+                            </div>
                         </div>
                         <div class="text-right">
-                            <button id="send" type="button" class="btn btn-primary">
-                                Eliminar
+                            <button type="submit" class="btn btn-primary">
+                                Estatus
                             </button>
                         </div>
                     </div>
@@ -52,14 +49,4 @@
 </div>
 @endsection
 @section('js_secondary')
-    <script type="text/javascript" nonce="{{ $hash_secondary }}">
-        $(document).ready(function(){
-            document.getElementById('send').onclick = function(){
-                confirm("Confirmación Necesaria", "Borrar un miembro es una acción irreversible", "BORRAR",
-                    "Cancelar", function(){
-                        document.getElementById("delete-member").submit();
-                    },"red");
-            }
-        });
-    </script>
 @endsection

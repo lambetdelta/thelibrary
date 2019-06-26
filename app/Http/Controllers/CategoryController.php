@@ -47,9 +47,15 @@ class CategoryController extends Controller
         return view('category.edit', $this->data);
     }
     public function delete(Request $req){
-        $member = BookCategory::withTrashed()->findOrFail($req->input('id'));
-        $member->forceDelete();
-        $req->session()->flash('message',__('category.delete'));
+        $category = BookCategory::withTrashed()->findOrFail($req->input('id'));
+        $req->validate([
+            'status_category' => 'required|in:1,0'
+        ]);
+        if ($req->input('status_category') == 0)
+            $category->delete();
+        else
+            $category->restore();
+        $req->session()->flash('message',__('category.status'));
         return redirect()->route('category_list');
     }
     public function viewDelete(Request $req, $id){

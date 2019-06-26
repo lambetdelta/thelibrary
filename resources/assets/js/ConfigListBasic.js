@@ -18,9 +18,12 @@ var ConfigListBasic = {
         var path =  Path.path_delete + '/' + row.id;
         return ConfigListBasic.btnLink(path, "Borrar", "btn-danger");
     },
-    renderEstatus:function(data, type, row, meta){
+    renderBtnEstatus:function(data, type, row, meta){
         var path =  Path.path_status + '/' + row.id;
         var status = row.deleted_at == '' ? "<span class='text-info'>Activo</span>" :  "<span class='text-danger'>Inactivo</span>";
         return status + "<br>" + ConfigListBasic.btnLink(path, "Estatus", "btn-warning");
+    },
+    renderEstatus:function(data, type, row, meta){
+        return  row.deleted_at == '' ? '<strong class="text-success">Activo</strong>' : '<strong class="text-warning">Inactivo</strong>';
     },
 }

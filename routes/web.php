@@ -116,3 +116,38 @@ Route::group(['prefix' => 'categorias', 'middleware' => ['auth']], function() {
     Route::post('borrar', "CategoryController@delete")
     ->name('category_delete');
 });
+
+Route::group(['prefix' => 'libros', 'middleware' => ['auth']], function() {
+
+    Route::get('list', "BookController@list")
+    ->name('book_list');
+
+    Route::get('agregar', "BookController@viewAdd")
+    ->name('book_view_add');
+
+    Route::post('agregar', "BookController@add")
+    ->name('book_add');
+
+    Route::get('editar/{id}', "BookController@viewEdit")
+    ->name('book_view_edit');
+
+    Route::post('editar', "BookController@edit")
+    ->name('book_edit');
+
+    Route::get('borrar/{id}', "BookController@viewDelete")
+    ->name('book_view_delete');
+
+    Route::post('borrar', "BookController@delete")
+    ->name('book_delete');
+});
+Route::group(['prefix' => 'prestamos', 'middleware' => ['auth']], function() {
+
+    Route::get('list', "BorrowingController@list")
+    ->name('borrowing_list');
+
+    Route::post('prestar', "BorrowingController@lend")
+    ->name('lend');
+
+    Route::post('devuelto', "BorrowingController@returnBook")
+    ->name('return_book');
+});

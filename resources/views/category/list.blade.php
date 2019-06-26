@@ -19,6 +19,7 @@
                         <th>Descripción</th>
                         <th>Fecha de Alta</th>
                         <th data-orderable="false">Editar</th>
+                        <th>Activo</th>
                         <th data-orderable="false">Borrar</th>
                    </tr>
                </thead>
@@ -30,6 +31,7 @@
                         <th>Descripción</th>
                         <th>Fecha de Alta</th>
                         <th>Editar</th>
+                        <th>Activo</th>
                         <th>Borrar</th>
                    </tr>
                </tfoot>
@@ -43,7 +45,7 @@
         $(document).ready(function(){
             var paths = {
                 path_edit:"{{route('category_view_edit', ['id' => 0])}}",
-                path_delete:"{{route('category_view_delete', ['id' => 0])}}",
+                path_status:"{{route('category_view_delete', ['id' => 0])}}",
             };
             Path.init(paths);
             var data = [];
@@ -55,15 +57,19 @@
                     render:ConfigListBasic.renderEdit
                 },
                 {
-                    render:ConfigListBasic.renderDelete
+                    render:ConfigListBasic.renderEstatus
+                },
+                {
+                    render:ConfigListBasic.renderBtnEstatus
                 },
             ];
             @foreach ($categorys as $category)
                 data.push({
                     id : "{{$category->id}}",
-                    name : "{{$category->name}}",
-                    description :"{{str_replace('"', '\"',$category->description)}}",
+                    name : "{{formatStringJS($category->name)}}",
+                    description :"{{formatStringJS($category->description)}}",
                     created_at : "{{formatDate($category->created_at)}}",
+                    deleted_at : "{{$category->deleted_at}}",
                 });
             @endforeach
             List.init("list_category", data, columns);

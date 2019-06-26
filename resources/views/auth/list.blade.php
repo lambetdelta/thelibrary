@@ -57,7 +57,7 @@
             @foreach ($users as $user)
                 data.push({
                     id: "{{$user->id}}",
-                    name: "{{$user->name}}",
+                    name: "{{formatStringJS($user->name)}}",
                     email: "{{$user->email}}",
                     active: "{{$user->active}}",
                 });

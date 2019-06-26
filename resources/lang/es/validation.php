@@ -147,7 +147,8 @@ return [
         'limit_id' => 'Soporte',
         'direction' => 'Soporte',
         'rows' => 'Soporte',
-        'name_user' => 'Nombre Completo'
+        'name_user' => 'Nombre Completo',
+        'status_category' => 'Estatus'
     ],
 
 ];
