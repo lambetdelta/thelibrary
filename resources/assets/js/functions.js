@@ -368,3 +368,21 @@ function multiselect(id){
   });
   document.getElementById(id).style.visibility = 'visible';
 }
+function dateInput(jquery_selecter, position = "bottom left", onSelect = null){
+    var config = {
+      dateFormat: 'dd/mm/yyyy',
+      language: 'es',
+      firstDay: 1,
+      todayButton: new Date(),
+      autoClose: true,
+      position: position,
+      clearButton:true,
+      onHide: function(dp, animationCompleted){
+          if (animationCompleted)
+              $("#datepickers-container > div").removeAttr('style');
+      }
+    };
+    if(typeof onSelect == "function")
+      config["onSelect"] = onSelect;
+    return $(jquery_selecter).datepicker(config).data('datepicker')
+  }

@@ -187,7 +187,10 @@ button.multiselect {
     margin-right: 5px;
     margin-left: 5px;
 }
-
+/* Soobreescribir estilos de selectize */
+.selectize-control{
+    padding: 0px;
+}
 /*Soobreescribir estilos de jquery confirm*/
 .jconfirm.jconfirm-supervan .jconfirm-bg{
     background-color: #724b9c;

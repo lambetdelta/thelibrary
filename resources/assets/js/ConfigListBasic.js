@@ -26,4 +26,8 @@ var ConfigListBasic = {
     renderEstatus:function(data, type, row, meta){
         return  row.deleted_at == '' ? '<strong class="text-success">Activo</strong>' : '<strong class="text-warning">Inactivo</strong>';
     },
+    btn:function(txt, css_btn, attributes = ""){
+        return  '<button type="button" class="btn ' + css_btn +
+            '" ' + attributes + '>' + txt + '</button>' ;
+    },
 }

@@ -148,7 +148,10 @@ return [
         'direction' => 'Soporte',
         'rows' => 'Soporte',
         'name_user' => 'Nombre Completo',
-        'status_category' => 'Estatus'
+        'status_category' => 'Estatus',
+        'published_date' => 'Fecha de Publicación',
+        'book_category_id' => 'Categoría',
+        'author' => 'Autor'
     ],
 
 ];

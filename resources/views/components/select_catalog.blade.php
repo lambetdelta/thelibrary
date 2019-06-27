@@ -1,10 +1,11 @@
-<div class="form-group {{ $errors->has($input) ? ' has-error' : '' }}">
+<div class="form-group {{ $errors->has($input) ? ' has-error' : '' }}
+    {{ isset($form_group) ? $form_group : '' }}">
     <label for="{{isset($id) ? $id : $name}}" class="control-label">{{$label}}</label>
-    <select id="{{isset($id) ? $id : $name}}" name={{$name}} class="form-control {{isset($css) ? $css : ''}}" 
+    <select id="{{isset($id) ? $id : $name}}" name={{$name}} class="form-control {{isset($css) ? $css : ''}}"
     {{isset($attributes) ? $attributes : ''}}>
         @foreach ($collection as $item)
             <option value="{{$item->id}}" {{ isset($value) ? ($value == $item->id ? 'selected' : '') : '' }}>
-                {{$item->display_name}}
+                {{$item->name}}
             </option>
         @endforeach
     </select>

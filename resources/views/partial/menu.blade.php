@@ -1,5 +1,5 @@
 <nav id="menu"  class="navbar navbar-expand-lg  bg-primary text-white">
-        <a class="navbar-brand" href="{{ route('home') }}">{{ config('app.name', 'Laravel') }}</a>
+        <a class="navbar-brand" href="{{ route('book_list') }}">{{ config('app.name', 'Laravel') }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-bar" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-ellipsis-h"></i>
         </button>

@@ -91,6 +91,7 @@ Route::group(['prefix' => 'miembros', 'middleware' => ['auth']], function() {
 
     Route::post('borrar', "MemberController@delete")
     ->name('member_delete');
+
 });
 
 Route::group(['prefix' => 'categorias', 'middleware' => ['auth']], function() {
@@ -142,8 +143,6 @@ Route::group(['prefix' => 'libros', 'middleware' => ['auth']], function() {
 });
 Route::group(['prefix' => 'prestamos', 'middleware' => ['auth']], function() {
 
-    Route::get('list', "BorrowingController@list")
-    ->name('borrowing_list');
 
     Route::post('prestar', "BorrowingController@lend")
     ->name('lend');

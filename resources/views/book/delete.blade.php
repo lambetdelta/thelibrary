@@ -2,12 +2,12 @@
 @section('content')
 @parent
 <div class="container-fluid mt-3">
-    <form id="delete-member" method="POST" action="{{ route('member_delete') }}">
+    <form id="delete-book" method="POST" action="{{ route('book_delete') }}">
     {{ csrf_field() }}
-    <input type="hidden" name="id" value="{{$member->id}}">
+    <input type="hidden" name="id" value="{{$book->id}}">
     <div class="row">
         <div class="col">
-            <h1>Miembro</h1>
+            <h1>Libros</h1>
         </div>
     </div>
     <div class="row justify-content-center">
@@ -22,21 +22,29 @@
                     <div class="container-fluid">
                         <div class="row">
                             @include('components.label',[
-                                'label' => 'Nombre Completo',
-                                'name' => 'first_name',
-                                'value' =>  $member->first_name,
+                                'label' => 'Nombre',
+                                'name' => 'name',
+                                'value' =>  $book->name,
                                 'form_group' => 'col-lg-6 col-md-6 col-sm-12 col-sx-12'
                             ])
                             @include('components.label',[
-                                'label' => 'Apellidos',
-                                'name' => 'first_name',
-                                'value' =>  $member->first_name,
+                                'label' => 'Autor',
+                                'name' => 'author',
+                                'value' =>  $book->author,
                                 'form_group' => 'col-lg-6 col-md-6 col-sm-12 col-sx-12'
                             ])
-                        </div>
-                        <div class="alert alert-warning" role="alert">
-                            <strong>Importante: </strong>Una vez que borres el miembro todos los registros de
-                            los préstamos realizados a él serán borrado también.
+                            @include('components.label',[
+                                'label' => 'Fecha de Publicación',
+                                'name' => 'published_date',
+                                'value' =>  $book->published_date,
+                                'form_group' => 'col-lg-6 col-md-6 col-sm-12 col-sx-12'
+                            ])
+                            @include('components.label',[
+                                'label' => 'Categoría',
+                                'name' => 'category',
+                                'value' =>  $book->category,
+                                'form_group' => 'col-lg-6 col-md-6 col-sm-12 col-sx-12'
+                            ])
                         </div>
                         <div class="text-right">
                             <button id="send" type="button" class="btn btn-primary">
@@ -55,9 +63,9 @@
     <script type="text/javascript" nonce="{{ $hash_secondary }}">
         $(document).ready(function(){
             document.getElementById('send').onclick = function(){
-                confirm("Confirmación Necesaria", "Borrar un miembro es una acción irreversible", "BORRAR",
+                confirm("Confirmación Necesaria", "Borrar un libro es una acción irreversible", "BORRAR",
                     "Cancelar", function(){
-                        document.getElementById("delete-member").submit();
+                        document.getElementById("delete-book").submit();
                     },"red");
             }
         });

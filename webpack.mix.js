@@ -18,7 +18,8 @@ mix.babel([
       'resources/assets/js/List.js',
       'resources/assets/js/ConfigListBasic.js',
       'resources/assets/js/EvaluatePassword.js',
-      'resources/assets/js/ImgPreview.js'
+      'resources/assets/js/ImgPreview.js',
+      'resources/assets/js/HttpResponses.js',
    ], 'public/js/app.js')
    .babel('resources/assets/js/DocReady.js', 'public/js/DocReady.js')
    .babel('resources/assets/js/ConfigListUser.js', 'public/js/ConfigListUser.js')
@@ -29,6 +30,7 @@ mix.babel([
       'resources/assets/vendor/MultiselectBootstrap/js/bootstrap-multiselect.js',
       'resources/assets/vendor/DataTables/datatables.js',
       'resources/assets/vendor/Moment/moment-with-locales.min.js',
+      'resources/assets/vendor/Selectize/dist/js/standalone/selectize.js',
       'resources/assets/vendor/Notify/notify.min.js',
       'resources/assets/vendor/jquery-confirm-v3/jquery-confirm.min.js',
       'resources/assets/vendor/Utf8/Utf8.js',
@@ -36,8 +38,9 @@ mix.babel([
    ], 'public/js/vendor.js')
    .scripts('resources/assets/vendor/Popper/popper.min.js','public/js/popper.min.js')
    .scripts([
-       'resources/assets/js/ConfigListBook.js'
-    ],'public/js/list_user.js')
+       'resources/assets/js/ConfigListBook.js',
+       'resources/assets/js/Borrowings.js'
+    ],'public/js/list_book.js')
    .styles([
       'resources/assets/vendor/Bootstrap-4.1.3/css/bootstrap.css',
       'resources/assets/vendor/air-datepicker/dist/css/datepicker.min.css',
@@ -46,6 +49,7 @@ mix.babel([
       'resources/assets/vendor/DataTables/datatables.css',
       'resources/assets/vendor/jquery-confirm-v3/jquery-confirm.min.css',
       'node_modules/izitoast/dist/css/iziToast.min.css',
+      'resources/assets/vendor/Selectize/dist/css/selectize.default.css',
    ], 'public/css/vendor.css')
    .styles([
       'resources/assets/css/app.css'

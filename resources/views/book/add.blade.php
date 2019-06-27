@@ -2,10 +2,10 @@
 @section('content')
 @parent
 <div class="container-fluid mt-3">
-    <form method="POST" action="{{ route('member_add') }}" >
+    <form method="POST" action="{{ route('book_add') }}" >
     <div class="row">
         <div class="col">
-            <h1>Miembro</h1>
+            <h1>Libros</h1>
         </div>
     </div>
     <div class="row justify-content-center">
@@ -21,19 +21,38 @@
                     <div class="container-fluid">
                         <div class="row">
                             @include('components.input',[
-                                'label' => '*Nombre Completo',
-                                'name' => 'first_name',
-                                'input' => 'first_name',
+                                'label' => '*Nombre',
+                                'name' => 'name',
+                                'input' => 'name',
                                 'attributes' => 'required',
-                                'value' =>  old('first_name'),
+                                'value' =>  old('name'),
                                 'form_group' => 'col-lg-6 col-md-6 col-sm-12 col-sx-12'
                             ])
                             @include('components.input',[
-                                'label' => '*Apellidos',
-                                'name' => 'last_name',
-                                'input' => 'last_name',
+                                'label' => '*Autor',
+                                'name' => 'author',
+                                'input' => 'author',
                                 'attributes' => 'required',
-                                'value' =>  old('last_name'),
+                                'value' =>  old('author'),
+                                'form_group' => 'col-lg-6 col-md-6 col-sm-12 col-sx-12'
+                            ])
+                            @include('components.input',[
+                                'label' => '*Fecha de Publicación',
+                                'name' => 'published_date',
+                                'input' => 'published_date',
+                                'css' => 'date',
+                                'attributes' => 'required',
+                                'value' =>  old('published_date'),
+                                'form_group' => 'col-lg-6 col-md-6 col-sm-12 col-sx-12'
+                            ])
+                             @include('components.select_catalog',[
+                                'label' => '*Categoría',
+                                'name' => 'book_category_id',
+                                'input' => 'book_category_id',
+                                'attributes' => 'required',
+                                'value' =>  old('book_category_id'),
+                                'css' => 'selectize',
+                                'collection' => $categorys,
                                 'form_group' => 'col-lg-6 col-md-6 col-sm-12 col-sx-12'
                             ])
                         </div>
@@ -50,6 +69,9 @@
 @endsection
 @section('js_secondary')
     <script type="text/javascript" nonce="{{ $hash_secondary }}">
-
+        $(document).ready(function(){
+            dateInput('.date');
+            $('.selectize').selectize();
+        });
     </script>
 @endsection

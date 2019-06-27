@@ -43,15 +43,14 @@
 </div>
 @endsection
 @section('js_secondary')
-    <script src="{{ asset(mix('js/list_user.js')) }}"></script>
+    <script src="{{ asset(mix('js/list_book.js')) }}"></script>
     <script type="text/javascript" nonce="{{ $hash_secondary }}">
         $(document).ready(function(){
             var paths = {
                 path_edit:"{{route('book_view_edit', ['id' => 0])}}",
                 path_delete:"{{route('book_view_delete', ['id' => 0])}}",
                 path_lend:"{{route('lend')}}",
-                path_return_book:"{{route('return_book')}}"
-
+                path_return_book:"{{route('return_book')}}",
             };
             Path.init(paths);
             var data = [];
@@ -75,12 +74,14 @@
                     id : "{{$book->id}}",
                     borrowing : "{{$book->borrowing}}",
                     name : "{{formatStringJS($book->name)}}",
-                    autor : "{{formatStringJS($book->autor)}}",
+                    author : "{{formatStringJS($book->author)}}",
                     category : "{{formatStringJS($book->category)}}",
                     published_date : "{{formatDate($book->published_date)}}",
                 });
             @endforeach
             List.init("list_books", data, columns);
+            var members =  @json($members, JSON_PRETTY_PRINT);;
+            Borrowings.init(data, members, ".borrowing",".delivery");
         })
     </script>
 @endsection

@@ -1,3 +1,7 @@
+var _messages;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 HTMLElement.prototype.removeClass = function (remove) {
@@ -438,6 +442,25 @@ function multiselect(id) {
   document.getElementById(id).style.visibility = 'visible';
 }
 
+function dateInput(jquery_selecter) {
+  var position = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "bottom left";
+  var onSelect = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  var config = {
+    dateFormat: 'dd/mm/yyyy',
+    language: 'es',
+    firstDay: 1,
+    todayButton: new Date(),
+    autoClose: true,
+    position: position,
+    clearButton: true,
+    onHide: function onHide(dp, animationCompleted) {
+      if (animationCompleted) $("#datepickers-container > div").removeAttr('style');
+    }
+  };
+  if (typeof onSelect == "function") config["onSelect"] = onSelect;
+  return $(jquery_selecter).datepicker(config).data('datepicker');
+}
+
 var Ms = {
   init: function init(css_class) {
     addEventForChild(document.body, "click", css_class, Ms.showMessage);
@@ -625,6 +648,10 @@ var ConfigListBasic = {
   },
   renderEstatus: function renderEstatus(data, type, row, meta) {
     return row.deleted_at == '' ? '<strong class="text-success">Activo</strong>' : '<strong class="text-warning">Inactivo</strong>';
+  },
+  btn: function btn(txt, css_btn) {
+    var attributes = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
+    return '<button type="button" class="btn ' + css_btn + '" ' + attributes + '>' + txt + '</button>';
   }
 };
 var EvaluatePassword = {
@@ -699,5 +726,25 @@ var ImgPreview = {
         elements[i].onchange = ImgPreview.previewFile;
       }
     }
+  }
+};
+var HttpResponses = {
+  messages: (_messages = {
+    400: "La solicitud tiene un formato incorrecto, recarga tu navegador e intenta de nuevo",
+    401: "Requiere autentificación",
+    403: "No estás autorizado",
+    404: "No encontramos lo que estás buscando",
+    409: "El recurso que intentas modificar esta bloqueado, si crees que estos es un error contacta a soporte",
+    500: "Error interno del servidor, prueba en otro momento"
+  }, _defineProperty(_messages, "500", "Error interno del servidor, prueba en otro momento"), _defineProperty(_messages, 503, "Error interno del servidor, prueba en otro momento"), _messages),
+  message: function message(status) {
+    var message = "No se encotro un mensaje predefinido";
+    if (HttpResponses.messages.hasOwnProperty(status)) message = HttpResponses.messages[status];
+    return message;
+  },
+  errorMs: function errorMs(xhrObj) {
+    var ms = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+    var code_ms = HttpResponses.message(xhrObj.status);
+    alert(code_ms + "<br>" + ms, "Aviso", "red");
   }
 };
