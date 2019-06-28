@@ -23,7 +23,7 @@ class BookController extends Controller
             ->join('book_categorys', 'book_categorys.id', '=', 'books.book_category_id')
             ->limit(5000)
             ->get());
-        $this->resData('members', Member::get()->toArray());
+        $this->resData('members', Member::orderBy('first_name')->get()->toArray());
         return view('book.list', $this->data);
     }
     public function add(BookRequest $req){

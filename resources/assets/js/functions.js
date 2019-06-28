@@ -329,7 +329,7 @@ function confirm(title, content, btn_ok, btn_cancel, function_ok = null, type = 
     buttons: {
         ok: {
             text: btn_ok,
-            btnClass: 'btn-primary',
+            btnClass: 'btn-info',
             action: function_ok
         },
         close: {

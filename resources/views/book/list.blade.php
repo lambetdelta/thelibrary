@@ -76,7 +76,7 @@
                     name : "{{formatStringJS($book->name)}}",
                     author : "{{formatStringJS($book->author)}}",
                     category : "{{formatStringJS($book->category)}}",
-                    published_date : "{{formatDate($book->published_date)}}",
+                    published_date : "{{formatDate($book->published_date, 'd/m/Y')}}",
                 });
             @endforeach
             List.init("list_books", data, columns);

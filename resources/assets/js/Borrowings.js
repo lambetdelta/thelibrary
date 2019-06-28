@@ -43,7 +43,7 @@ var Borrowings = {
             buttons: {
                 ok: {
                     text: "Prestar",
-                    btnClass: 'btn-primary',
+                    btnClass: 'btn-info',
                     action: Borrowings.requestLend
                 },
                 close: {
